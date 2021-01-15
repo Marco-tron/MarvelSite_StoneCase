@@ -27,16 +27,27 @@
                 </clickable>
             </div>
         </div>
+        <paginate
+            class="flex"
+            v-model="page"
+            :page-count="pages"
+            prev-text="<"
+            next-text=">"
+            container-class="paginate"
+        />
   </div>
 </template>
 
 <script>
 import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
+import Paginate from '~/node_modules/vuejs-paginate/src/components/Paginate'
+
 
 export default {
     components: {
-        Clickable
+        Clickable,
+        Paginate
     },
     async asyncData({
         params,
@@ -97,7 +108,9 @@ export default {
         }
         return {
             category,
-            list
+            list,
+            pages,
+            page
         };
     },
     data() {
@@ -108,10 +121,29 @@ export default {
 }
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
+<style lang="scss">
+.paginate{
+    @apply my-4 justify-between ;
+    li{
+
+        @apply bg-gray-900 text-white font-semibold h-10 w-10 flex items-center justify-center rounded-md border-transparent border-4 ;
+        a{
+            @apply flex items-center justify-center h-full w-full border-none ;
+        }
+    }
+    li:hover {
+        @apply border-red-800 shadow-2xl ;
+    }
+
+    .disabled{
+        @apply bg-gray-600 ;
+    }
+    .active{
+        @apply border-4 border-red-800 shadow-2xl ;
+    }
+
+    .disabled:hover {
+        @apply border-transparent cursor-default ;
+    }
 }
-*/
 </style>
