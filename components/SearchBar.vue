@@ -16,8 +16,17 @@ export default {
     props: {
     
     },
+    data () {
+        return {
+            find: "",
+            placeholderText: "Busque aqui"
+        }
+    },
     methods: {
-
+        //takes you to the route to find the required char or comic
+        search () {
+            window.location.href = `${this.$route.path}?find=${this.find}`
+        }
     }
 }
 </script>
