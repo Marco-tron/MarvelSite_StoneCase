@@ -1,6 +1,7 @@
 # MarvelSite_StoneCase
 
 > site made in 7 days which lets you search and favorite Marvel&#39;s comics and characters
+> create a .env file with PRIVATE_KEY and PUBLIC_KEY to access the marvel API with your ublic and private keys
 
 ## Build Setup
 
