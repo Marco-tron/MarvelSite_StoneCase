@@ -8,6 +8,7 @@
                 Os personagens mais incríveis da MARVEL estão logo abaixo
             </h2>
         </div>
+        <search-bar/>
         <div class="grid w-full flex-wrap grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <div v-for="item in list" :key="item.index" class="bg-gray-900 rounded-tl-lg rounded-br-lg">
                 <clickable>
@@ -31,6 +32,7 @@
             class="flex"
             v-model="page"
             :page-count="pages"
+            :click-handler="loadPage"
             prev-text="<"
             next-text=">"
             container-class="paginate"
@@ -42,12 +44,14 @@
 import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
 import Paginate from '~/node_modules/vuejs-paginate/src/components/Paginate'
+import SearchBar from '~/components/SearchBar'
 
 
 export default {
     components: {
         Clickable,
-        Paginate
+        Paginate,
+        SearchBar
     },
     async asyncData({
         params,
@@ -76,7 +80,7 @@ export default {
         let response = {};
         let list = [];
 
-        
+        //fetching characters or comics
         try {
             response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset}`);
             console.log(response);
@@ -116,6 +120,13 @@ export default {
     data() {
         return {
             items
+        }
+    },
+    methods: {
+        loadPage (page) {
+            console.log(this.$route);
+            // this code changes the page you're currently in if you have a find parameter it wil also add that
+            window.location.href = `${this.$route.path}?page=${page}${this.$route.query.find ? 'find=' + this.$route.query.find : ''}`
         }
     }
 }
