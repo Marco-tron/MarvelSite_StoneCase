@@ -1,6 +1,6 @@
 <template>
   <div>
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center text-center my-4">
             <h1 class="text-4xl text-gray-900 font-bold">
                 COMEÇE A PROCURAR
             </h1>
@@ -8,7 +8,7 @@
                 Quer encontrar aquele quadrinho inesquecível? Ou o personagem que você ama?
             </h2>
         </div>
-        <div class="flex flex-col md:flex-row justify-between">
+        <div class="flex flex-col md:flex-row justify-between my-4">
             <home-item/>
             <home-item/>
         </div>
