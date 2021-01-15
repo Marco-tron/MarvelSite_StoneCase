@@ -8,7 +8,7 @@
                 Quer encontrar aquele quadrinho inesquecível? Ou o personagem que você ama?
             </h2>
         </div>
-        <div class="flex justify-between">
+        <div class="flex flex-col md:flex-row justify-between">
             <home-item/>
             <home-item/>
         </div>
