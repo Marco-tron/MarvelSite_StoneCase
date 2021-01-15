@@ -6,6 +6,11 @@
 */
 module.exports = {
   theme: {},
-  variants: {},
+  variants: {
+    extend: {
+       borderWidth: ['hover', 'focus'],
+    }
+
+  },
   plugins: []
 }
