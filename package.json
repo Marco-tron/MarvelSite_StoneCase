@@ -11,6 +11,8 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "md5": "^2.3.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
