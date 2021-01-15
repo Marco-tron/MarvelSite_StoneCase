@@ -1,8 +1,18 @@
 <template>
   <div>
+    <MarvelHeader/>
     <nuxt />
   </div>
 </template>
+<script>
+import MarvelHeader from '@/components/Header'
+
+export default {
+    components: {
+        MarvelHeader
+    }
+}
+</script>
 
 <style>
 html {
