@@ -2,11 +2,11 @@
   <div>
         <header class="h-20 z-20 bg-gray-900 w-full text-white font-semibold flex justify-between text-xl">
             <div class="h-full flex justify-center">
-                <clickable class="w-32 flex justify-center">
+                <clickable class="px-4 flex justify-center">
                     LOGIN
                 </clickable>
-                <span class="mx-1 flex items-center">|</span>
-                <clickable class="w-32 flex justify-center">
+                <span class="my-4 bg-white bar"/>
+                <clickable class="px-4 flex justify-center">
                     CADASTRO
                 </clickable>
             </div>
@@ -32,6 +32,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+ .bar{
+     width: 2px;
+ }
 </style>
