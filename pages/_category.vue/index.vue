@@ -9,27 +9,34 @@
             </h2>
         </div>
         <div class="grid w-full flex-wrap grid-cols-4 gap-8">
-            <div v-for="item in list" :key="item.index" class="">
-                <div class="h-64 rounded-tl-lg">
-                    <img :src="item.thumb" alt="" class="object-cover w-full h-full rounded-tl-lg">
-                </div>
-                <div class="h-32 bg-gray-900 rounded-br-lg p-2 text-white">
-                    <h3 class="font-bold text-lg">
-                        {{item.title}}
-                    </h3>
-
-                </div>
+            <div v-for="item in list" :key="item.index" class="bg-gray-900 rounded-tl-lg rounded-br-lg">
+                <clickable>
+                    <div>
+                        <div class="h-64 ">
+                            <img :src="item.thumb" alt="" class="object-cover w-full h-full rounded-tl-lg">
+                        </div>
+                        <div class="flex flex-col justify-between h-32 bg-gray-900 px-4 pt-4 pb-1 text-white">
+                            <h3 class="font-bold text-xl">
+                                {{item.title}}
+                            </h3>
+                            <div class="font-semibold text-red-800 text-right">
+                                VER MAIS
+                            </div>
+                        </div>
+                    </div>
+                </clickable>
             </div>
-            
         </div>
   </div>
 </template>
 
 <script>
 import items from '~/static/json/HomeItems.json';
+import Clickable from '~/components/general/Clickable'
 
 export default {
     components: {
+        Clickable
     },
     async asyncData({
         params,
@@ -50,7 +57,7 @@ export default {
         let response = {};
         let list = [];
         try {
-            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${publickey}&hash=${hash}`);
+            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/comics?ts=${ts}&apikey=${publickey}&hash=${hash}`);
             console.log(response);
         } catch (e) {
             console.log(e);
@@ -58,7 +65,9 @@ export default {
         //formating 
         if (response) {
             list = response.data.results.map((i) => {
-                const title = i.name ? i.name : i.title + " #" + i.issueNumber;
+                // this checks if its a char or a comic if its a char it takes its name if its a comic it checks if it has the issue number if it has  it attributes its title if not, it also adds the issue number
+                let title = i.name ? i.name : i.title.includes("#") ? i.title : i.title + " #" + i.issueNumber;
+                if (title.length > 40) title = title.slice(0,40) + "..."
                 const thumb = i.thumbnail.path + "." + i.thumbnail.extension;
                 const id = i.id;
                 return {
