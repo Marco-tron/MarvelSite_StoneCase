@@ -38,9 +38,17 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .image{
-        width: 480px;
-        height: 480px;
+        width: 260px;
+        height: 260px;
+         @media screen and (min-width: 360px) {
+            width: 320px;
+            height: 320px;
+        }
+        @media screen and (min-width: 640px) {
+            width: 480px;
+            height: 480px;
+        }
     }
 </style>
