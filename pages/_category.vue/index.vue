@@ -8,7 +8,18 @@
                 Os personagens mais incríveis da MARVEL estão logo abaixo
             </h2>
         </div>
-        <div>
+        <div class="grid w-full flex-wrap grid-cols-4 gap-8">
+            <div v-for="item in list" :key="item.index" class="">
+                <div class="h-64 rounded-tl-lg">
+                    <img :src="item.thumb" alt="" class="object-cover w-full h-full rounded-tl-lg">
+                </div>
+                <div class="h-32 bg-gray-900 rounded-br-lg p-2 text-white">
+                    <h3 class="font-bold text-lg">
+                        {{item.title}}
+                    </h3>
+
+                </div>
+            </div>
             
         </div>
   </div>
@@ -36,16 +47,31 @@ export default {
         // validations for Marvel's API
         const hash = md5(ts + privatekey + publickey);
 
-        let response = [];
+        let response = {};
+        let list = [];
         try {
             response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${publickey}&hash=${hash}`);
-            console.log(items);
+            console.log(response);
         } catch (e) {
             console.log(e);
         }
-        
+        //formating 
+        if (response) {
+            list = response.data.results.map((i) => {
+                const title = i.name ? i.name : i.title + " #" + i.issueNumber;
+                const thumb = i.thumbnail.path + "." + i.thumbnail.extension;
+                const id = i.id;
+                return {
+                    id,
+                    title,
+                    thumb
+                }
+            })
+            console.log(list);
+        }
         return {
-            category
+            category,
+            list
         };
     },
     data() {
