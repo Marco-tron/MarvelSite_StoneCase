@@ -11,12 +11,9 @@
                 </clickable>
             </div>
       </header>
-      <nav class="h-10 z-10 w-full bg-gray-600 text-white flex justify-around shadow-xl">
-            <clickable to="/comics" class="w-32 flex justify-center">
-                COMICS
-            </clickable>
-            <clickable to="/personagens" class="w-32 flex justify-center">
-                PERSONAGENS
+      <nav class="h-10 z-10 w-full bg-gray-600 text-white flex justify-around shadow-xl"> 
+            <clickable v-for="item in items" :key="item.index" :link="item.link" class="w-32 flex justify-center">
+                {{item.title}} 
             </clickable>
       </nav>
   </div>
@@ -24,10 +21,16 @@
 
 <script>
 import Clickable from '~/components/general/Clickable'
+import items from '~/static/json/HomeItems.json'
 
 export default {
     components: {
         Clickable
+    },
+    data() {
+        return {
+            items
+        }
     }
 }
 </script>

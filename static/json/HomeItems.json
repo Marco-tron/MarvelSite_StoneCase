@@ -1,0 +1,12 @@
+[
+    {
+        "title": "COMICS",
+        "image": "marvel_comics.jpg",
+        "link": "/comics"
+    },
+    {
+        "title": "PERSONAGENS",
+        "image": "marvel_characters.jpg",
+        "link": "/personagens"
+    }
+]
