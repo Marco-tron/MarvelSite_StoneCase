@@ -1,15 +1,15 @@
 <template>
-    <div class="flex flex-col items-center ">
+    <a href="/comics" class="flex flex-col items-center ">
         <h3 class="text-2xl font-semibold">
             COMICS
         </h3>
         <img src="" alt="">
-        <div class="bg-gray-900 text-white  rounded-tl-lg rounded-br-lg hover:rounded-none">
+        <div class="bg-gray-900 text-white  rounded-tl-lg rounded-br-lg">
             <clickable class="px-4 py-3">
                 VER TODOS
             </clickable>
         </div>
-    </div>
+    </a>
 </template>
 
 <script>
@@ -22,6 +22,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
