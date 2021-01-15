@@ -41,7 +41,8 @@ export default {
     async asyncData({
         params,
         $axios,
-        $config
+        $config,
+        query
     }) {
         var md5 = require("md5"); 
         // are you searching for comics or characters?
@@ -55,15 +56,28 @@ export default {
         // validations for Marvel's API
         const hash = md5(ts + privatekey + publickey);
 
+        //pagination
+        const limit = 20
+        const page = query.page ? Number(query.page) : 1
+        const offset = (page-1)*limit
+        let pages = 0
+
         let response = {};
         let list = [];
+
+        
         try {
-            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}`);
+            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset}`);
             console.log(response);
+
+            // calculating total pages
+            pages = Math.ceil(response.data.total/response.data.limit)
+            console.log(pages);
         } catch (e) {
             console.log(e);
         }
-        //formating 
+
+        //formating response
         if (response) {
             list = response.data.results.map((i) => {
                 // this checks if its a char or a comic if its a char it takes its name if its a comic it checks if it has the issue number if it has  it attributes its title if not, it also adds the issue number
