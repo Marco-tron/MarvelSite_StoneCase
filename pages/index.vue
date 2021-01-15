@@ -8,13 +8,18 @@
                 Quer encontrar aquele quadrinho inesquecível? Ou o personagem que você ama?
             </h2>
         </div>
+        <div class="flex justify-between">
+            <home-item/>
+            <home-item/>
+        </div>
   </div>
 </template>
 
 <script>
-
+import HomeItem from '~/components/HomeItem'
 export default {
   components: {
+      HomeItem
   }
 }
 </script>
