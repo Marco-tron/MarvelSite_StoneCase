@@ -23,12 +23,10 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import Clickable from '~/components/general/Clickable'
 
 export default {
     components: {
-        Logo,
         Clickable
     }
 }
