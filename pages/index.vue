@@ -9,8 +9,8 @@
             </h2>
         </div>
         <div class="flex flex-col md:flex-row justify-between my-4">
-            <home-item/>
-            <home-item/>
+            <home-item title="COMICS" link="/comics" image="marvel_comics.jpg" />
+            <home-item title="PERSONAGENS" link="/personagens" image="marvel_characters.jpg" />
         </div>
   </div>
 </template>
@@ -18,9 +18,9 @@
 <script>
 import HomeItem from '~/components/HomeItem'
 export default {
-  components: {
-      HomeItem
-  }
+    components: {
+        HomeItem
+    }
 }
 </script>
 
