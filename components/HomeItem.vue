@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
     .image{
-        width: 900px;
-        height: 900px;
+        width: 400px;
+        height: 400px;
     }
 </style>
