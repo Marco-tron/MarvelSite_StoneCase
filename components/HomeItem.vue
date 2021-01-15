@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Clickable from './general/clickable.vue'
+import Clickable from '~/components/general/Clickable'
 
 export default {
     components: {
