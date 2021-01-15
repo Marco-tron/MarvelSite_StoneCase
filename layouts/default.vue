@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MarvelHeader/>
+    <marvel-header/>
     <nuxt />
   </div>
 </template>
