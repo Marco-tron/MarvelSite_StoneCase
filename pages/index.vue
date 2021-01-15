@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
         <div class="flex flex-col items-center text-center my-4">
             <h1 class="text-4xl text-gray-900 font-bold">
                 COMEÇE A PROCURAR

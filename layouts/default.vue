@@ -26,7 +26,13 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
-
+/* container to place the main content of the site */
+.container {
+    @media screen and (max-width: 1024px) {
+        padding: 0 1rem;
+    }
+    @apply mx-auto
+}
 *,
 *:before,
 *:after {
