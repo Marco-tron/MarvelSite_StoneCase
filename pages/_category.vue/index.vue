@@ -1,14 +1,17 @@
 <template>
   <div class="container">
-        <div class="flex flex-col items-start text-left mb-4">
-            <h1 class="text-4xl text-gray-900 font-bold">
-                {{category}}
-            </h1>
-            <h2 class="text-xl text-gray-600">
-                Os personagens mais incríveis da MARVEL estão logo abaixo
-            </h2>
+        <div class="flex flex-col md:flex-row md:justify-between md:items-end">
+            <div class="flex flex-col items-start text-left mb-4">
+                <h1 class="text-4xl text-gray-900 font-bold">
+                    {{category}}
+                </h1>
+                <h2 class="text-xl text-gray-600">
+                    Os personagens mais incríveis da MARVEL estão logo abaixo
+                </h2>
+            </div>
+            <search-bar class="my-4"/>
         </div>
-        <search-bar/>
+        
         <div class="grid w-full flex-wrap grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <div v-for="item in list" :key="item.index" class="bg-gray-900 rounded-tl-lg rounded-br-lg">
                 <clickable>

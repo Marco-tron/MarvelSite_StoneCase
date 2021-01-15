@@ -1,10 +1,12 @@
 <template>
     <form class @submit.prevent.stop="search">
         <input
+            class="p-2 border-2 border-gray-600 rounded-tl-lg"
             v-model="find"
             :placeholder="placeholderText"
-            type="text">
-        <button @click="search">
+            type="text"
+        >
+        <button @click="search" class="bg-gray-600 p-2 border-2 border-gray-600 rounded-br-lg -ml-2">
             <img src="" alt="">Buscar
         </button>
     </form>
