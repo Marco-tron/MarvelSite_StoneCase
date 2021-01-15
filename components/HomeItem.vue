@@ -7,7 +7,7 @@
             <img class="object-cover h-full" :src="`images/${image}`" alt="">
         </div>
         <div class="bg-gray-900 text-white  rounded-tl-lg rounded-br-lg">
-            <clickable class="px-4 py-3">
+            <clickable :link="link" class="px-4 py-3">
                 VER TODOS
             </clickable>
         </div>
@@ -16,6 +16,7 @@
 
 <script>
 import Clickable from '~/components/general/Clickable'
+
 
 export default {
     components: {
