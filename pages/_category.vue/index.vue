@@ -8,7 +8,7 @@
                 Os personagens mais incríveis da MARVEL estão logo abaixo
             </h2>
         </div>
-        <div class="grid w-full flex-wrap grid-cols-4 gap-8">
+        <div class="grid w-full flex-wrap grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <div v-for="item in list" :key="item.index" class="bg-gray-900 rounded-tl-lg rounded-br-lg">
                 <clickable>
                     <div>
@@ -69,8 +69,8 @@ export default {
                 let title = i.name ? i.name : i.title.includes("#") ? i.title : i.title + " #" + i.issueNumber;
 
                 // checking title length
-                if (title.length > 40) title = title.slice(0,40) + "..."
-                
+                if (title.length > 32) title = title.slice(0,32) + "..."
+
                 const thumb = i.thumbnail.path + "." + i.thumbnail.extension;
                 const id = i.id;
                 return {
