@@ -2,14 +2,14 @@
   <div class="container">
         <div class="flex flex-col items-start text-left mb-4">
             <h1 class="text-4xl text-gray-900 font-bold">
-                PERSONAGENS
+                {{category}}
             </h1>
             <h2 class="text-xl text-gray-600">
                 Os personagens mais incríveis da MARVEL estão logo abaixo
             </h2>
         </div>
         <div>
-            {{category}}
+            
         </div>
   </div>
 </template>
@@ -22,9 +22,22 @@ export default {
     },
     async asyncData({
         params,
-        $axios
+        $axios,
+        $config
     }) {
-        const category = params.category;
+        var md5 = require("md5"); 
+        const category = params.category.toUpperCase();
+        const privatekey = $config.privatekey;
+        const publickey = $config.publickey;
+        const ts = new Date().valueOf();
+        const hash = md5(ts + privatekey + publickey);
+        console.log($config);
+        try {
+            const items = await $axios.$get(`https://gateway.marvel.com:443/v1/public/characters?ts=${ts}&apikey=${publickey}&hash=${hash}`);
+            console.log(items);
+        } catch (e) {
+            console.log(e);
+        }
         
         return {
             category

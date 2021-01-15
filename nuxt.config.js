@@ -48,6 +48,11 @@ export default {
   /*
   ** Build configuration
   */
+  publicRuntimeConfig: {
+    // set your private an public key on a .env file to acess Marvel's API
+    privateKey: process.env.PRIVATE_KEY,
+    publicKey: process.env.PUBLIC_KEY
+  },
   build: {
     /*
     ** You can extend webpack config here
