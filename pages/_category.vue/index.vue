@@ -67,7 +67,10 @@ export default {
             list = response.data.results.map((i) => {
                 // this checks if its a char or a comic if its a char it takes its name if its a comic it checks if it has the issue number if it has  it attributes its title if not, it also adds the issue number
                 let title = i.name ? i.name : i.title.includes("#") ? i.title : i.title + " #" + i.issueNumber;
+
+                // checking title length
                 if (title.length > 40) title = title.slice(0,40) + "..."
+                
                 const thumb = i.thumbnail.path + "." + i.thumbnail.extension;
                 const id = i.id;
                 return {
