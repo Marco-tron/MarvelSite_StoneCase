@@ -36,12 +36,10 @@
 
 import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
-import Title from  '~/components/general/Title'
 
 export default {
     components: {
-        Clickable,
-        Title
+        Clickable
     },
     async asyncData({
         params,

@@ -14,13 +14,11 @@
 
 <script>
 import HomeItem from '~/components/HomeItem'
-import Title from  '~/components/general/Title'
 import items from '~/static/json/HomeItems.json'
 
 export default {
     components: {
-        HomeItem,
-        Title
+        HomeItem
     },
     data() {
         return {

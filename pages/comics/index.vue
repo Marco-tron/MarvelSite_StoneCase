@@ -48,7 +48,6 @@
 <script>
 import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
-import Title from  '~/components/general/Title'
 import Paginate from '~/node_modules/vuejs-paginate/src/components/Paginate'
 import SearchBar from '~/components/SearchBar'
 
@@ -57,8 +56,7 @@ export default {
     components: {
         Clickable,
         Paginate,
-        SearchBar,
-        Title
+        SearchBar
     },
     async asyncData({
         route,
