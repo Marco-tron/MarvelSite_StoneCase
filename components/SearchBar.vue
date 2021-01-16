@@ -23,7 +23,6 @@ export default {
     },
     data () {
         return {
-            find: "",
             placeholderText: "Busque aqui"
         }
     },
