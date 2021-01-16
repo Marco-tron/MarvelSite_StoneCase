@@ -85,7 +85,7 @@ export default {
         const offset = (page-1)*limit
         let pages = 0
 
-        let response = {};
+        let response = null;
         let list = [];
         // search engine
         const find = query.find ? query.find : "";
