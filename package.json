@@ -17,6 +17,7 @@
     "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {
+    "@nuxtjs/global-components": "^0.6.1",
     "@nuxtjs/tailwindcss": "^1.0.0",
     "fibers": "^5.0.0",
     "sass": "^1.32.4",
