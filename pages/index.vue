@@ -1,9 +1,7 @@
 <template>
   <div class="container">
         <div class="flex flex-col items-center text-center mb-4">
-            <h1 class="text-4xl text-gray-900 font-bold">
-                COMEÇE A PROCURAR
-            </h1>
+            <Title text="COMEÇE A PROCURAR"/>
             <h2 class="text-xl text-gray-600">
                 Quer encontrar aquele quadrinho inesquecível? Ou o personagem que você ama?
             </h2>
@@ -16,11 +14,13 @@
 
 <script>
 import HomeItem from '~/components/HomeItem'
+import Title from  '~/components/general/Title'
 import items from '~/static/json/HomeItems.json'
 
 export default {
     components: {
-        HomeItem
+        HomeItem,
+        Title
     },
     data() {
         return {

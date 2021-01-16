@@ -4,9 +4,7 @@
             <img class="w-full" :src="details.thumb" alt="">
             
             <div class="flex flex-col items-start text-left mb-4">
-                <h1 class="text-4xl text-gray-900 font-bold">
-                    {{details.title}}
-                </h1>
+                <Title :text="details.title"/>
                 <div class="my-2">
                     <h2 class="text-xl text-gray-600">
                         DETALHES
@@ -38,10 +36,12 @@
 
 import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
+import Title from  '~/components/general/Title'
 
 export default {
     components: {
         Clickable,
+        Title
     },
     async asyncData({
         params,

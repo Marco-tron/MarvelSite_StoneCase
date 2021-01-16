@@ -2,9 +2,7 @@
   <div class="container">
         <div class="flex flex-col lg:flex-row md:justify-between md:items-end">
             <div class="flex flex-col items-start text-left mb-4">
-                <h1 class="text-4xl text-gray-900 font-bold">
-                    {{category}}
-                </h1>
+                <Title :text="category"/>
                 <h2 class="text-xl text-gray-600">
                     Os personagens mais incríveis da MARVEL estão logo abaixo
                 </h2>
@@ -50,6 +48,7 @@
 <script>
 import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
+import Title from  '~/components/general/Title'
 import Paginate from '~/node_modules/vuejs-paginate/src/components/Paginate'
 import SearchBar from '~/components/SearchBar'
 
@@ -58,7 +57,8 @@ export default {
     components: {
         Clickable,
         Paginate,
-        SearchBar
+        SearchBar,
+        Title
     },
     async asyncData({
         route,
