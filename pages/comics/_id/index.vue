@@ -19,9 +19,9 @@
                         {{details.list.title}}
                     </h2>
                     <div>
-                        <div v-for="item in details.list.items" :key="item.index">
+                        <clickable v-for="item in details.list.items" :key="item.index" :link="item.link">
                             {{item.name}}
-                        </div>
+                        </clickable>
                     </div>
                 </div>
             </div>
