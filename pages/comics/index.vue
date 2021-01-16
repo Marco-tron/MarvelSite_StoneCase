@@ -18,7 +18,7 @@
         
         <div class="grid w-full flex-wrap grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <div v-for="item in list" :key="item.index" class="bg-gray-900 rounded-tl-lg rounded-br-lg">
-                <clickable>
+                <clickable :link="detailsLink(item.id)">
                     <div>
                         <div class="h-64 ">
                             <img :src="item.thumb" alt="" class="object-cover w-full h-full rounded-tl-lg">
@@ -61,14 +61,15 @@ export default {
         SearchBar
     },
     async asyncData({
-        params,
+        route,
         $axios,
         $config,
         query
     }) {
         var md5 = require("md5"); 
         // are you searching for comics or characters?
-        const category = params.category.toUpperCase();
+        console.log(route)
+        const category = route.name.toUpperCase();
         const call = category === "COMICS" ? "comics" : "characters";
 
         // Marvel's API  private and public key
@@ -141,6 +142,9 @@ export default {
             console.log(this.$route);
             // this code changes the page you're currently in if you have a find parameter it wil also add that
             window.location.href = `${this.$route.path}?page=${page}${this.$route.query.find ? '&find=' + this.$route.query.find : ''}`
+        },
+        detailsLink (id) {
+            return this.$route.path + "/" + id
         }
     }
 }

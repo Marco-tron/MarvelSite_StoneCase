@@ -37,13 +37,14 @@ export default {
     },
     async asyncData({
         params,
+        route,
         $axios,
         $config,
         query
     }) {
         var md5 = require("md5"); 
         // is it a comic or character page?
-        const category = params.category.toUpperCase();
+        const category = route.name.toUpperCase();
         const id = params.id;
         const call = category === "COMICS" ? "comics" : "characters";
 
