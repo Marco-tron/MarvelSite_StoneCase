@@ -22,7 +22,7 @@
                     <div v-else>
                         Desculpe, não há detalhes salvos para esta página
                     </div>
-                    <see-more/>
+                    <see-more v-if="details.list.seemore" :link="details.list.seemoreLink" />
                 </div>
             </div>
         </div>
@@ -96,7 +96,9 @@ export default {
                     };
                 }),
                 // checking if there are more comics related than the ones listed on the response
-                seemore: response[listcall].available > response[listcall].items.length
+                seemore: response[listcall].available > response[listcall].items.length,
+                // link to see all related items
+                seemoreLink: `/${listcall === "comics" ? listcall : "personagens"}?related=${response.id}`
             }
         }
         return {
