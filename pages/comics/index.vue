@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-end">
+        <div class="flex flex-col lg:flex-row md:justify-between md:items-end">
             <div class="flex flex-col items-start text-left mb-4">
                 <h1 class="text-4xl text-gray-900 font-bold">
                     {{category}}
