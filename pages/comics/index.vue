@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+    <div class="container">
+        <breadcrumbs :breadcrumbs="breadcrumbs" />
         <div class="flex flex-col lg:flex-row md:justify-between md:items-end">
             <div class="flex flex-col items-start text-left mb-4">
                 <Title :text="category"/>
@@ -43,7 +44,7 @@
             next-text=">"
             container-class="paginate"
         />
-  </div>
+    </div>
 </template>
 
 <script>
@@ -81,13 +82,19 @@ export default {
         const offset = (page-1)*limit
         let pages = 0
 
-        let response = null;
-        let list = [];
         // search engine
         const find = query.find ? query.find : "";
         const related = query.related ? query.related : "";
         let findString = "";
-        let relatedString ="";
+
+        //breadcrumbs
+        const breadcrumbs = [{
+            name: route.name,
+            link: route.path
+        }]
+
+        let relatedString ="";let response = null;
+        let list = [];
 
         if (find) {
             findString = category === "COMICS" ? `&titleStartsWith=${find}` : `&nameStartsWith=${find}`
@@ -132,7 +139,8 @@ export default {
             pages,
             page,
             find,
-            related
+            related,
+            breadcrumbs
         };
     },
     data() {

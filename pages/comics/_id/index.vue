@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+        <breadcrumbs :breadcrumbs="breadcrumbs" />
         <div class="grid w-full flex-wrap grid-cols-1  md:grid-cols-2  gap-10">
             <img class="w-full" :src="details.thumb" alt="">
             
@@ -101,9 +102,24 @@ export default {
                 seemoreLink: `/${listcall === "comics" ? listcall : "personagens"}?related=${response.id}&name="${details.title}"`
             }
         }
+
+        //breadcrumbs
+        const breadcrumbs =[
+            {
+                name: call,
+                link: "/" + call,
+                index: 1
+            },
+            {
+                name: details.title,
+                link: route.path,
+                index: 2
+            }
+        ]
         return {
             category,
-            details
+            details,
+            breadcrumbs
         };
     },
     data() {
