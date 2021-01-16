@@ -22,6 +22,7 @@
                     <div v-else>
                         Desculpe, não há detalhes salvos para esta página
                     </div>
+                    <see-more/>
                 </div>
             </div>
         </div>
@@ -31,9 +32,11 @@
 <script>
 
 import items from '~/static/json/HomeItems.json';
+import SeeMore from '~/components/general/SeeMore';
 
 export default {
     components: {
+        SeeMore
     },
     async asyncData({
         params,
