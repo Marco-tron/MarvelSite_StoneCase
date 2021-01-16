@@ -11,17 +11,22 @@
                     <h2 class="text-xl text-gray-600">
                         DETALHES
                     </h2>
-                    <div v-html="details.description">
+                    <div v-if="details.description" v-html="details.description"/>
+                    <div v-else>
+                        Desculpe, não há detalhes salvos para esta página
                     </div>
                 </div>
                 <div class="my-2">
                     <h2 class="text-xl text-gray-600">
                         {{details.list.title}}
                     </h2>
-                    <div>
+                    <div v-if="details.list">
                         <clickable v-for="item in details.list.items" :key="item.index" :link="item.link">
                             {{item.name}}
                         </clickable>
+                    </div>
+                    <div v-else>
+                        Desculpe, não há detalhes salvos para esta página
                     </div>
                 </div>
             </div>
@@ -86,12 +91,13 @@ export default {
                 
                 items: response[listcall].items.map((i)=>{
                     //regex to extract the id from the uri call
-                    const re = listcall === "comics" ? new RegExp(/\/comics\/(.*)/) : new RegExp(/characters\/(\.*)/g);
+                    const re = listcall === "comics" ? new RegExp(/\/comics\/(.*)/) : new RegExp(/characters\/(.*)/);
                     // the regex response is an array where the first one is a full match and the second corresponds only to the group specified and that's our id we want
                     let id = i.resourceURI.match(re)[1];
+                    console.log(id)
                     return {
                         name: i.name,
-                        link: `/${listcall}/${id}`
+                        link: `/${listcall === "comics" ? listcall : "personagens"}/${id}`
                     };
                 }),
                 // checking if there are more comics related than the ones listed on the response
