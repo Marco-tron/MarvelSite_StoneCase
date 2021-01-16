@@ -1,4 +1,4 @@
 <script>
-import CharsDetailsPage from "@/comics/_id/index";
+import CharsDetailsPage from "@/pages/comics/_id/index.vue";
 export default CharsDetailsPage;
 </script>

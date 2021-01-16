@@ -1,4 +1,4 @@
 <script>
-import CharsPage from "@/comics/index";
+import CharsPage from "@/pages/comics/index.vue";
 export default CharsPage;
 </script>
