@@ -11,6 +11,9 @@
         <div v-if="find" class="text-lg text-gray-600 my-4">
             Resultados de busca para "{{find}}" ...
         </div>
+        <div v-if="related && $route.query.name" class="text-lg text-gray-600 my-4">
+            {{category}} relacionados a "{{$route.query.name}}" ...
+        </div>
         
         <div class="grid w-full flex-wrap grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <div v-for="item in list" :key="item.index" class="bg-gray-900 rounded-tl-lg rounded-br-lg">
@@ -62,7 +65,6 @@ export default {
     }) {
         var md5 = require("md5"); 
         // are you searching for comics or characters?
-        console.log(route)
         const category = route.name.toUpperCase();
         const call = category === "COMICS" ? "comics" : "characters";
 
@@ -83,22 +85,28 @@ export default {
         let list = [];
         // search engine
         const find = query.find ? query.find : "";
+        const related = query.related ? query.related : "";
         let findString = "";
+        let relatedString ="";
+
         if (find) {
             findString = category === "COMICS" ? `&titleStartsWith=${find}` : `&nameStartsWith=${find}`
+        };
+        if (related) {
+            relatedString = category === "COMICS" ? `&characters=${related}` : `&comics=${related}`
         };
 
         //fetching characters or comics
         try {
-            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset + findString}`);
-            console.log(response);
+            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset + findString + relatedString}`);
+            console.log(relatedString)
 
             // calculating total pages
             pages = Math.ceil(response.data.total/response.data.limit)
-            console.log(pages);
         } catch (e) {
             console.log(e);
         }
+        console.log(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset + findString + relatedString}`);
 
         //formating response
         if (response) {
@@ -123,7 +131,8 @@ export default {
             list,
             pages,
             page,
-            find
+            find,
+            related
         };
     },
     data() {

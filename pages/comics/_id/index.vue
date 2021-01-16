@@ -14,7 +14,7 @@
                 </div>
                 <div class="my-2">
                     <Subtitle :text="details.list.title"/>
-                    <div v-if="details.list">
+                    <div v-if="details.list && details.list.items">
                         <clickable v-for="item in details.list.items" :key="item.index" :link="item.link">
                             {{item.name}}
                         </clickable>
@@ -98,7 +98,7 @@ export default {
                 // checking if there are more comics related than the ones listed on the response
                 seemore: response[listcall].available > response[listcall].items.length,
                 // link to see all related items
-                seemoreLink: `/${listcall === "comics" ? listcall : "personagens"}?related=${response.id}`
+                seemoreLink: `/${listcall === "comics" ? listcall : "personagens"}?related=${response.id}&name="${details.title}"`
             }
         }
         return {
