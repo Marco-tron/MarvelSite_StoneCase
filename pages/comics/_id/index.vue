@@ -31,11 +31,9 @@
 <script>
 
 import items from '~/static/json/HomeItems.json';
-import Clickable from '~/components/general/Clickable'
 
 export default {
     components: {
-        Clickable
     },
     async asyncData({
         params,

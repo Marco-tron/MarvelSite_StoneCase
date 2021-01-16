@@ -20,12 +20,10 @@
 </template>
 
 <script>
-import Clickable from '~/components/general/Clickable'
 import items from '~/static/json/HomeItems.json'
 
 export default {
     components: {
-        Clickable
     },
     data() {
         return {

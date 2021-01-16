@@ -45,14 +45,12 @@
 
 <script>
 import items from '~/static/json/HomeItems.json';
-import Clickable from '~/components/general/Clickable'
-import Paginate from '~/node_modules/vuejs-paginate/src/components/Paginate'
-import SearchBar from '~/components/SearchBar'
+import Paginate from '~/node_modules/vuejs-paginate/src/components/Paginate';
+import SearchBar from '~/components/SearchBar';
 
 
 export default {
     components: {
-        Clickable,
         Paginate,
         SearchBar
     },
