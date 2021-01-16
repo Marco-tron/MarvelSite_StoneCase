@@ -9,7 +9,11 @@
                     Os personagens mais incríveis da MARVEL estão logo abaixo
                 </h2>
             </div>
-            <search-bar class="my-4"/>
+            <search-bar :find="find" class="my-4"/>
+        </div>
+
+        <div v-if="find" class="text-lg text-gray-600 my-4">
+            Resultados de busca para "{{find}}" ...
         </div>
         
         <div class="grid w-full flex-wrap grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -82,10 +86,16 @@ export default {
 
         let response = {};
         let list = [];
+        // search engine
+        const find = query.find ? query.find : "";
+        let findString = "";
+        if (find) {
+            findString = category === "COMICS" ? `&titleStartsWith=${find}` : `&nameStartsWith=${find}`
+        };
 
         //fetching characters or comics
         try {
-            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset}`);
+            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset + findString}`);
             console.log(response);
 
             // calculating total pages
@@ -117,7 +127,8 @@ export default {
             category,
             list,
             pages,
-            page
+            page,
+            find
         };
     },
     data() {
@@ -144,11 +155,16 @@ export default {
         a{
             @apply flex items-center justify-center h-full w-full border-none ;
         }
+        a:focus {
+            outline:none;
+        }
     }
     li:hover {
         @apply border-red-800 shadow-2xl ;
     }
-
+    li:focus{
+        @apply border-4 border-red-800 shadow-2xl ;
+    }
     .disabled{
         @apply bg-gray-600 ;
     }

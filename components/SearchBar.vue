@@ -6,8 +6,8 @@
             :placeholder="placeholderText"
             type="text"
         >
-        <button @click="search" class="bg-gray-600 p-2 border-2 border-gray-600 rounded-br-lg -ml-2">
-            <img src="" alt="">Buscar
+        <button @click="search" class="bg-gray-600 p-2 border-2 border-gray-600 rounded-br-lg -ml-2 text-white">
+            Buscar
         </button>
     </form>
 </template>
@@ -16,7 +16,10 @@
 
 export default {
     props: {
-    
+        find:{
+            type: String,
+            default: ""
+        }
     },
     data () {
         return {
@@ -33,6 +36,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+form{
+    input:focus {
+        outline:none;
+    }
+    button:focus {
+        outline:none;
+    }
+}
 
 </style>
