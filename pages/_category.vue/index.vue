@@ -148,10 +148,10 @@ export default {
 
 <style lang="scss">
 .paginate{
-    @apply my-4 justify-between ;
+    @apply my-4 justify-center p-4 bg-gray-300 rounded-tl-lg rounded-br-lg border border-2 border-gray-600 ;
     li{
 
-        @apply bg-gray-900 text-white font-semibold h-10 w-10 flex items-center justify-center rounded-md border-transparent border-4 ;
+        @apply bg-gray-900 text-white font-semibold h-10 w-10 m-2 flex items-center justify-center rounded-md border-transparent border-4 ;
         a{
             @apply flex items-center justify-center h-full w-full border-none ;
         }
