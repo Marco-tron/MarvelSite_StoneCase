@@ -2,6 +2,9 @@
   <div>
     <marvel-header/>
     <nuxt />
+    <div class="h-10 bg-gray-600 flex items-center justify-center text-white">
+        <div v-html="attributionHTML"/>
+    </div>
   </div>
 </template>
 <script>
@@ -10,8 +13,29 @@ import MarvelHeader from '@/components/Header'
 export default {
     components: {
         MarvelHeader
+    },
+    data() {
+        return{
+            attributionHTML:""
+        }
+    },
+    async mounted () {
+        var md5 = require("md5"); 
+        const privatekey = this.$config.privateKey;
+        const publickey = this.$config.publicKey;
+        const ts = new Date().valueOf();
+        // validations for Marvel's API
+        const hash = md5(ts + privatekey + publickey);
+
+        try {
+            this.attributionHTML = await this.$axios.$get(`https://gateway.marvel.com:443/v1/public/comics?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=1`).then(res => res.attributionHTML);
+        } catch(e) {
+            console.log(e);
+        }
+        
     }
-}
+};
+
 </script>
 
 <style>
