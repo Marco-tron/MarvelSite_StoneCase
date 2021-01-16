@@ -63,7 +63,7 @@ export default {
         //fetching characters or comics
                 console.log(response);
         try {
-            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}/${id}?ts=${ts}&apikey=${publickey}&hash=${hash}`);
+            response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}/${id}?ts=${ts}&apikey=${publickey}&hash=${hash}`).then(res => res.data.results[0]);
             console.log(response);
         } catch (e) {
             console.log(e);
