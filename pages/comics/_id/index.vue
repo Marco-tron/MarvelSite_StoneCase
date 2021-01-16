@@ -29,6 +29,8 @@
 </template>
 
 <script>
+
+import items from '~/static/json/HomeItems.json';
 import Clickable from '~/components/general/Clickable'
 
 export default {
@@ -46,7 +48,7 @@ export default {
         // is it a comic or character page?
         const category = route.name.toUpperCase();
         const id = params.id;
-        const call = category === "COMICS" ? "comics" : "characters";
+        const call = category.includes("COMICS") ? "comics" : "characters";
 
         // Marvel's API  private and public key
         const privatekey = $config.privateKey;
@@ -55,10 +57,11 @@ export default {
         // validations for Marvel's API
         const hash = md5(ts + privatekey + publickey);
 
-        let response = {};
+        let response = null;
         let list = [];
 
         //fetching characters or comics
+                console.log(response);
         try {
             response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}/${id}?ts=${ts}&apikey=${publickey}&hash=${hash}`);
             console.log(response);
@@ -84,10 +87,7 @@ export default {
         }
         return {
             category,
-            list,
-            pages,
-            page,
-            find
+            list
         };
     },
     data() {
