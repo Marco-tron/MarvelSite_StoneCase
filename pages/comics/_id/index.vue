@@ -1,26 +1,27 @@
 <template>
   <div class="container">
         <div class="grid w-full flex-wrap grid-cols-1  md:grid-cols-2  gap-10">
-            <img src="" alt="">
+            <img class="w-full" :src="details.thumb" alt="">
             
             <div class="flex flex-col items-start text-left mb-4">
                 <h1 class="text-4xl text-gray-900 font-bold">
-                    {{category}}
+                    {{details.title}}
                 </h1>
-                <div>
-                    <h2>
+                <div class="my-2">
+                    <h2 class="text-xl text-gray-600">
                         DETALHES
                     </h2>
-                    <div>
-
+                    <div v-html="details.description">
                     </div>
                 </div>
-                <div>
-                    <h2>
-                        COMICS RELACIONADAS
+                <div class="my-2">
+                    <h2 class="text-xl text-gray-600">
+                        {{details.list.title}}
                     </h2>
                     <div>
-                        
+                        <div v-for="item in details.list.items" :key="item.index">
+                            {{item.name}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,6 +50,7 @@ export default {
         const category = route.name.toUpperCase();
         const id = params.id;
         const call = category.includes("COMICS") ? "comics" : "characters";
+        const listcall = category.includes("COMICS") ? "characters" : "comics";
 
         // Marvel's API  private and public key
         const privatekey = $config.privateKey;
@@ -58,7 +60,7 @@ export default {
         const hash = md5(ts + privatekey + publickey);
 
         let response = null;
-        let list = [];
+        let details = {}
 
         //fetching characters or comics
                 console.log(response);
@@ -71,23 +73,34 @@ export default {
 
         //formating response
         if (response) {
-            list = response.data.results.map((i) => {
-                // this checks if its a char or a comic if its a char it takes its name if its a comic it checks if it has the issue number if it has  it attributes its title if not, it also adds the issue number
-                let title = i.name ? i.name : i.title.includes("#") ? i.title : i.title + " #" + i.issueNumber;
+            
+            // this checks if its a char or a comic if its a char it takes its name if its a comic it checks if it has the issue number if it has  it attributes its title if not, it also adds the issue number
+            details.title = response.name ? response.name : response.title.includes("#") ? response.title : response.title + " #" + response.issueNumber;
 
-                const thumb = i.thumbnail.path + "." + i.thumbnail.extension;
-                const id = i.id;
+            details.thumb = response.thumbnail.path + "." + response.thumbnail.extension;
+            details.id = response.id;
+            details.description = response.description
+            // making a list of comics or chars depending on the page, with their name and link
+            details.list= {
+                title: call === "comics" ? "PERSONAGENS RELACIONADOS" : "COMICS RELACIONADAS",
                 
-                return {
-                    id,
-                    title,
-                    thumb
-                }
-            })
+                items: response[listcall].items.map((i)=>{
+                    //regex to extract the id from the uri call
+                    const re = listcall === "comics" ? new RegExp(/\/comics\/(.*)/) : new RegExp(/characters\/(\.*)/g);
+                    // the regex response is an array where the first one is a full match and the second corresponds only to the group specified and that's our id we want
+                    let id = i.resourceURI.match(re)[1];
+                    return {
+                        name: i.name,
+                        link: `/${listcall}/${id}`
+                    };
+                }),
+                // checking if there are more comics related than the ones listed on the response
+                seemore: response[listcall].available > response[listcall].items.length
+            }
         }
         return {
             category,
-            list
+            details
         };
     },
     data() {
