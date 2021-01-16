@@ -3,9 +3,7 @@
         <div class="flex flex-col lg:flex-row md:justify-between md:items-end">
             <div class="flex flex-col items-start text-left mb-4">
                 <Title :text="category"/>
-                <h2 class="text-xl text-gray-600">
-                    Os personagens mais incríveis da MARVEL estão logo abaixo
-                </h2>
+                <Subtitle text=" Os personagens mais incríveis da MARVEL estão logo abaixo"/>
             </div>
             <search-bar :find="find" class="my-4"/>
         </div>

@@ -2,9 +2,7 @@
   <div class="container">
         <div class="flex flex-col items-center text-center mb-4">
             <Title text="COMEÇE A PROCURAR"/>
-            <h2 class="text-xl text-gray-600">
-                Quer encontrar aquele quadrinho inesquecível? Ou o personagem que você ama?
-            </h2>
+            <Subtitle text="Quer encontrar aquele quadrinho inesquecível? Ou o personagem que você ama?"/>
         </div>
         <div class="flex flex-col md:flex-row justify-between my-4">
             <home-item v-for="item in items" :key="item.index" :title="item.title" :link="item.link" :image="item.image" />

@@ -6,18 +6,14 @@
             <div class="flex flex-col items-start text-left mb-4">
                 <Title :text="details.title"/>
                 <div class="my-2">
-                    <h2 class="text-xl text-gray-600">
-                        DETALHES
-                    </h2>
+                    <Subtitle text="DETALHES"/>
                     <div v-if="details.description" v-html="details.description"/>
                     <div v-else>
                         Desculpe, não há detalhes salvos para esta página
                     </div>
                 </div>
                 <div class="my-2">
-                    <h2 class="text-xl text-gray-600">
-                        {{details.list.title}}
-                    </h2>
+                    <Subtitle :text="details.list.title"/>
                     <div v-if="details.list">
                         <clickable v-for="item in details.list.items" :key="item.index" :link="item.link">
                             {{item.name}}
