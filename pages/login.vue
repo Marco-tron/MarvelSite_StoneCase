@@ -36,9 +36,11 @@ export default {
         }
     },
     methods: {
+        // function to make login
         login (e) {
             console.log("login",e);
         },
+        // function to register user
         signUp (e) {
             console.log("signUp",e);
         }
