@@ -6,6 +6,10 @@
             
             <div class="flex flex-col items-start text-left mb-4">
                 <Title :text="details.title"/>
+                <div v-if="loggedIn">
+                    <input type="checkbox" id="favorite" v-model="favorite" @change="UpdateFav($event)">
+                    <label for="favorite">FAVORITO</label>
+                </div>
                 <div class="my-2">
                     <Subtitle text="DETALHES"/>
                     <div v-if="details.description" v-html="details.description"/>
@@ -122,7 +126,9 @@ export default {
         return {
             category,
             details,
-            breadcrumbs
+            breadcrumbs,
+            loggedIn: true,
+            favorite: true
         };
     },
     data() {
@@ -131,6 +137,15 @@ export default {
         }
     },
     methods: {
+        // function to update favorite on database
+        UpdateFav (e) {
+            console.log(e, this.favorite);
+            if (this.favorite) {
+                // send new favorite to database
+            } else {
+                // remove favorite from database
+            }
+        }
     }
 }
 </script>
