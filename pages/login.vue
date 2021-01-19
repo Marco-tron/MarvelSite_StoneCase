@@ -1,7 +1,12 @@
 <template> 
     <div class="container grid grid-cols-2">
         <div>
-            <user-input title="LOGIN" subtitle="Entre com seu email e senha" action="login"/>
+            <user-input
+                title="LOGIN"
+                subtitle="Entre com seu email e senha"
+                action="login"
+                @SendData="login($event)"
+            />
             <div class="flex text-gray-600 text-2xl justify-between items-center">
                 <span class="h-1 w-1/2 bg-gray-600" />
                 <span class="mx-4">
@@ -9,7 +14,12 @@
                 </span>
                 <span class="h-1 w-1/2 bg-gray-600" />
             </div>
-            <user-input title="CADASTRO" subtitle="Cadastre um email e senha para utilizar mais funcionalidades de nosso site" action="cadastre-se"/>
+            <user-input
+                title="CADASTRO"
+                subtitle="Cadastre um email e senha para utilizar mais funcionalidades de nosso site"
+                action="cadastre-se"
+                @SendData="signUp($event)"
+            />
 
         </div>
     </div>
@@ -23,26 +33,14 @@ export default {
     },
     data() {
         return {
-            login: [
-                {
-                    name: "E-mail",
-                    model: ""
-                },
-                {
-                    name: "Senha",
-                    model: ""
-                }
-            ],
-            signUp: [
-                {
-                    name: "E-mail",
-                    model: ""
-                },
-                {
-                    name: "Senha",
-                    model: ""
-                }
-            ]
+        }
+    },
+    methods: {
+        login (e) {
+            console.log("login",e);
+        },
+        signUp (e) {
+            console.log("signUp",e);
         }
     }
 

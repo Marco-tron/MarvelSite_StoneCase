@@ -43,7 +43,15 @@ export default {
         }
     },
     methods: {
-        
+        SendData () {
+            const data = {};
+            // mapping the data to send for login or sign in
+            this.items.map((i) => {
+                data[i.name] = i.model;
+            });
+            // emmiting evvent with user data
+            this.$emit("SendData", data)
+        }
     },
 
 }
