@@ -20,9 +20,6 @@
                             {{item.name}}
                         </clickable>
                     </div>
-                    <div v-else>
-                        Desculpe, não há detalhes salvos para esta página
-                    </div>
                     <see-more v-if="details.list.seemore" :link="details.list.seemoreLink" />
                 </div>
             </div>
@@ -61,7 +58,13 @@ export default {
         const hash = md5(ts + privatekey + publickey);
 
         let response = null;
-        let details = {}
+        let details = {
+            title: "",
+            id: "",
+            description: "",
+            list: {},
+            seemore: false
+        }
 
         //fetching characters or comics
                 console.log(response);
