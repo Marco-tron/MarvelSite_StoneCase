@@ -2,7 +2,7 @@
     <div class="container">
         <Title text="MEUS DADOS"/>
         <Subtitle text="Aqui você pode ver e editar os dados de sua conta" />
-        <div class="grid grid-cols-2">
+        <div class="grid grid-cols-2 pb-48">
             <div>
             <div class="flex grid grid-cols-3">
                 <span class="font-bold">Nome:</span> <span> {{user.name}} </span> <clickable class="w-32" link="/meusdados/alterar-dados"> Alterar dados</clickable>
