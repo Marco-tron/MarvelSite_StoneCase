@@ -6,7 +6,7 @@
             {{item.name}}
             <span><input v-model="item.model" class="px-1 ml-1 border-2 border-gray-600 rounded-tl-lg rounded-br-lg" type="text"></span>
         </div>
-        <button @click.prevent.stop="SendData()">
+        <button class="py-2 px-3 bg-gray-600 font-bold rounded-tl-lg rounded-br-lg text-white" @click.prevent.stop="SendData()">
             {{action}}
         </button>
     </form>
