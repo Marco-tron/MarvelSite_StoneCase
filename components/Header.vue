@@ -1,7 +1,13 @@
 <template>
   <div>
         <header class="h-20 z-20 bg-gray-900 w-full text-white font-semibold flex justify-between text-xl">
-            <div class="h-full flex justify-center">
+            <clickable v-if="loggedIn" link="/meus-dados" class="h-full px-4">
+                <div class="flex items-center">
+                    <img class="h-10 mr-2" src="~/static/icons/user.svg" alt="">
+                    <span>{{user.name}}</span>
+                </div>
+            </clickable>
+            <div v-else class="h-full flex justify-center">
                 <clickable link="/login" class="px-4 flex justify-center">
                     LOGIN
                 </clickable>
@@ -33,7 +39,10 @@ export default {
     data() {
         return {
             items,
-            loggedIn: true
+            loggedIn: true,
+            user: {
+                name: "Marco"
+            }
         }
     }
 }
