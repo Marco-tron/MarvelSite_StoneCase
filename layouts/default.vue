@@ -38,7 +38,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap);
 html {
   font-family: "Lato", sans-serif !important;
@@ -91,5 +91,14 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+form{
+  input:focus {
+    outline:none;
+  }
+  button:focus {
+    outline:none;
+  }
 }
 </style>

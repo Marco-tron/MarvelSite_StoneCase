@@ -36,13 +36,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-form{
-    input:focus {
-        outline:none;
-    }
-    button:focus {
-        outline:none;
-    }
-}
 
 </style>
