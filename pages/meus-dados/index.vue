@@ -1,18 +1,21 @@
 <template>
-  <div class="container">
-      <Title text="MEUS DADOS"/>
-      <Subtitle text="Aqui você pode ver e editar os dados de sua conta" />
-      <div>
+    <div class="container">
+        <Title text="MEUS DADOS"/>
+        <Subtitle text="Aqui você pode ver e editar os dados de sua conta" />
+        <div class="grid grid-cols-2">
             <div>
-                Nome: <span> {{user.name}} </span>
+            <div class="flex grid grid-cols-3">
+                <span class="font-bold">Nome:</span> <span> {{user.name}} </span> <clickable class="w-32" link="/meusdados/alterar-dados"> Alterar dados</clickable>
             </div>
-            <div>
-                email: <span> {{user.email}} </span>
+            <div class="flex grid grid-cols-3">
+                <span class="font-bold">E-mail:</span> <span> {{user.email}} </span> <clickable class="w-32" link="/meusdados/alterar-dados"> Alterar dados</clickable>
             </div>
-      </div>
-      <div>
-          Senha: <span> ********* </span>
-      </div>
+            <div class="flex grid grid-cols-3">
+                <span class="font-bold">Senha:</span> <span> ********* </span> <clickable class="w-32" link="/meusdados/alterar-senha"> Alterar senha</clickable>
+            </div>
+        </div>
+        </div>
+        
   </div>
 </template>
 
@@ -20,7 +23,7 @@
 export default {
     data() {
         return {
-            user: {
+        user: {
                 name: "Marco",
                 email: "teste@teste.com"
             }
