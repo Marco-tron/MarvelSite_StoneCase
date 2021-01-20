@@ -7,6 +7,9 @@
                 action="login"
                 @SendData="login($event)"
             />
+            <div v-if="loginmessage.show" :class="loginmessage.class">
+                {{loginmessage.text}}
+            </div>
             <div class="flex text-gray-600 text-2xl justify-between items-center">
                 <span class="h-1 w-1/2 bg-gray-600" />
                 <span class="mx-4">
@@ -35,13 +38,31 @@ export default {
     },
     data() {
         return {
-            signmessage: ""
+            signmessage: {},
+            loginmessage: {}
         }
     },
     methods: {
         // function to make login
-        login (e) {
-            console.log("login",e);
+        async login (e) {
+            try {
+                console.log("signUp",e);
+                const response = await this.$axios.$post(`${this.$config.host}/users/login`, e);
+                console.log(response);
+                sessionStorage.setItem("token", response.token);
+                sessionStorage.setItem("user", JSON.stringify(response.user));
+                sessionStorage.setItem("loggedIn", "true");
+
+                window.location.href = "/"
+
+            } catch(e){
+                this.loginmessage =  {
+                    text:"Senha ou E-mail inválidos",
+                    class: "text-red-500",
+                    show: true
+                }
+                console.log(e,)
+            }
         },
         // function to register user
         async signUp (e) {

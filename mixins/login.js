@@ -5,7 +5,7 @@ export default{
     },
     mounted () {
         // get user data from session storage
-        const user = sessionStorage.getItem("user");
+        const user = JSON.parse(sessionStorage.getItem("user"));
         const loggedIn = sessionStorage.getItem("loggedIn") === "true";
         const token = sessionStorage.getItem("token");
         const timeout = sessionStorage.getItem("timeout");
