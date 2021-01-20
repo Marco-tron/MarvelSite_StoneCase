@@ -46,13 +46,14 @@ export default {
         // function to make login
         async login (e) {
             try {
-                console.log("signUp",e);
+                //tries to login
                 const response = await this.$axios.$post(`${this.$config.host}/users/login`, e);
-                console.log(response);
+
+                // sets user data on session|Storage
                 sessionStorage.setItem("token", response.token);
                 sessionStorage.setItem("user", JSON.stringify(response.user));
                 sessionStorage.setItem("loggedIn", "true");
-
+                // returns to home
                 window.location.href = "/"
 
             } catch(e){
