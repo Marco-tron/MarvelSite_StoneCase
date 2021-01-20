@@ -8,12 +8,14 @@
   </div>
 </template>
 <script>
-import MarvelHeader from '@/components/Header'
+import MarvelHeader from '@/components/Header';
+import loginMixin from "@/mixins/login.js";
 
 export default {
     components: {
         MarvelHeader
     },
+    mixins: [loginMixin],
     data() {
         return{
             attributionHTML:""
