@@ -52,7 +52,8 @@ export default {
   publicRuntimeConfig: {
     // set your private an public key on a .env file to acess Marvel's API
     privateKey: process.env.PRIVATE_KEY,
-    publicKey: process.env.PUBLIC_KEY
+    publicKey: process.env.PUBLIC_KEY,
+    host: process.env.API_HOST,
   },
   build: {
     /*
