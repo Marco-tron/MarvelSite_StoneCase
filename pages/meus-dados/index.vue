@@ -15,6 +15,11 @@
                 </div>
             </div>
         </div>
+        <form class="font-semibold">
+            <div class="button w-32 cursor-pointer h-full flex items-center justify-center border-b-4 border-transparent hover:border-red-800 hover:font-bold hover:shadow-2xl" @click.prevent.stop="logout()">
+                Sair da conta
+            </div>
+        </form>
         
   </div>
 </template>
@@ -27,6 +32,17 @@ export default {
                 name: "Marco",
                 email: "teste@teste.com"
             }
+        }
+    },
+    methods: {
+        logout () {
+            // remove userdata from session storage
+            sessionStorage.removeItem("token");
+            sessionStorage.removeItem("user");
+            sessionStorage.removeItem("loggedIn");
+
+            // returns to homepage
+            window.location.href = "/";
         }
     }
 
