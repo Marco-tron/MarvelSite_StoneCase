@@ -1,7 +1,7 @@
 <template>
   <div>
         <header class="h-20 z-20 bg-gray-900 w-full text-white font-semibold flex justify-between text-xl">
-            <clickable v-if="loggedIn" link="/meus-dados" class="h-full px-4">
+            <clickable v-if="$store.state.loggedIn" link="/meus-dados" class="h-full px-4">
                 <div class="flex items-center">
                     <img class="h-10 mr-2" src="~/static/icons/user.svg" alt="">
                     <span>{{user.name}}</span>
@@ -16,7 +16,7 @@
                     CADASTRO
                 </clickable>
             </div>
-            <div v-if="loggedIn">
+            <div v-if="$store.state.loggedIn">
                 <clickable link="/favoritos" class="px-4 flex justify-center">
                     FAVORITOS
                 </clickable>
