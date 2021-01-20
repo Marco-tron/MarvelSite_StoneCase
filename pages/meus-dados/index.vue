@@ -1,9 +1,9 @@
 <template>
-    <div v-if="$store.state.loggedIn" class="container">
+    <div v-if="$store.state.loggedIn" class="container mb-48">
         <Title text="MEUS DADOS"/>
         <Subtitle text="Aqui você pode ver e editar os dados de sua conta" />
         <div class="grid grid-cols-2 pb-48">
-            <div>
+            <div >
                 <div class="flex grid grid-cols-3">
                     <span class="font-bold">Nome:</span> <span> {{$store.state.user.name}} </span> <clickable class="w-32" link="/meus-dados/alterar-dados"> Alterar dados</clickable>
                 </div>
