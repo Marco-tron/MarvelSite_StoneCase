@@ -20,7 +20,9 @@
                 action="cadastre-se"
                 @SendData="signUp($event)"
             />
-
+            <div v-if="signmessage.show" :class="signmessage.class">
+                {{signmessage.text}}
+            </div>
         </div>
     </div>
 </template>
@@ -33,6 +35,7 @@ export default {
     },
     data() {
         return {
+            signmessage: ""
         }
     },
     methods: {
@@ -41,8 +44,25 @@ export default {
             console.log("login",e);
         },
         // function to register user
-        signUp (e) {
-            console.log("signUp",e);
+        async signUp (e) {
+            try {
+                console.log("signUp",e);
+                const response = await this.$axios.$post(`${this.$config.host}/users/signup`, e);
+                console.log(response);
+                this.signmessage =  {
+                    text:"Usuário criado com sucesso",
+                    class: "text-blue-500",
+                    show: true
+                }
+            } catch(e){
+                this.signmessage =  {
+                    text:"Insira valores válidos",
+                    class: "text-red-500",
+                    show: true
+                }
+                console.log(e,)
+            }
+            
         }
     }
 

@@ -33,10 +33,12 @@ export default {
             items: [
             {
                 name: "E-mail",
+                value: "email",
                 model: ""
             },
             {
                 name: "Senha",
+                value: "password",
                 model: ""
             }
         ]
@@ -47,7 +49,7 @@ export default {
             const data = {};
             // mapping the data to send for login or sign in
             this.items.map((i) => {
-                data[i.name] = i.model;
+                data[i.value] = i.model;
             });
             // emmiting evvent with user data
             this.$emit("SendData", data)
