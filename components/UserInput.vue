@@ -4,9 +4,9 @@
         <Subtitle :text="subtitle" />
         <div v-for="item in items" :key="item.index" class="my-3" >
             {{item.name}}
-            <span><input v-model="item.model" class="px-1 ml-1 border-2 border-gray-600 rounded-tl-lg rounded-br-lg" type="text"></span>
+            <span><input v-model="item.model" class="input" type="text"></span>
         </div>
-        <button class="py-2 px-3 bg-gray-600 font-bold rounded-tl-lg rounded-br-lg text-white" @click.prevent.stop="SendData()">
+        <button class="button" @click.prevent.stop="SendData()">
             {{action}}
         </button>
     </form>

@@ -103,4 +103,11 @@ form{
     outline:none;
   }
 }
+.input {
+    @apply px-1 ml-1 border-2 border-gray-600 rounded-tl-lg rounded-br-lg ;
+}
+
+.button {
+    @apply py-2 px-3 bg-gray-600 font-bold rounded-tl-lg rounded-br-lg text-white ;
+}
 </style>
