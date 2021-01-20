@@ -4,10 +4,10 @@
             <clickable v-if="$store.state.loggedIn" link="/meus-dados" class="h-full px-4">
                 <div class="flex items-center">
                     <img class="h-10 mr-2" src="~/static/icons/user.svg" alt="">
-                    <span>{{user.name}}</span>
+                    <span>{{$store.state.user.name}}</span>
                 </div>
             </clickable>
-            <div v-else class="h-full flex justify-center">
+            <div v-if="!loading && !$store.state.loggedIn" class="h-full flex justify-center">
                 <clickable link="/login" class="px-4 flex justify-center">
                     LOGIN
                 </clickable>
@@ -39,11 +39,11 @@ export default {
     data() {
         return {
             items,
-            loggedIn: true,
-            user: {
-                name: "Marco"
-            }
+            loading: true
         }
+    },
+    mounted() {
+        this.loading = false
     }
 }
 </script>
