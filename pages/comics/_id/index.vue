@@ -6,7 +6,7 @@
             
             <div class="flex flex-col items-start text-left mb-4">
                 <Title :text="details.title"/>
-                <div v-if="loggedIn">
+                <div v-if="$store.state.loggedIn">
                     <input type="checkbox" id="favorite" v-model="favorite" @change="UpdateFav($event)">
                     <label for="favorite">FAVORITO</label>
                 </div>
@@ -71,7 +71,6 @@ export default {
         }
 
         //fetching characters or comics
-                console.log(response);
         try {
             response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}/${id}?ts=${ts}&apikey=${publickey}&hash=${hash}`).then(res => res.data.results[0]);
             console.log(response);
@@ -97,7 +96,6 @@ export default {
                     const re = listcall === "comics" ? new RegExp(/\/comics\/(.*)/) : new RegExp(/characters\/(.*)/);
                     // the regex response is an array where the first one is a full match and the second corresponds only to the group specified and that's our id we want
                     let id = i.resourceURI.match(re)[1];
-                    console.log(id)
                     return {
                         name: i.name,
                         link: `/${listcall === "comics" ? listcall : "personagens"}/${id}`
@@ -127,9 +125,26 @@ export default {
             category,
             details,
             breadcrumbs,
-            loggedIn: true,
-            favorite: true
+            favorite: false,
+            call
         };
+    },
+    async mounted () {
+        try {
+                // fetches the list of favorites items
+            const token = sessionStorage.getItem("token")
+            
+            const favorites = await this.$axios.$get(`${this.$config.host}/users/favorites`,{
+                headers: { authorization: token}
+            });
+            console.log(favorites)
+            //sets checked value true or false
+            this.favorite = favorites.find(element => element.marvelid === this.details.id && element.category === this.call);
+            console.log(favorite)
+        } catch(e) {
+            console.log(e);
+        }
+        
     },
     data() {
         return {
@@ -138,12 +153,30 @@ export default {
     },
     methods: {
         // function to update favorite on database
-        UpdateFav (e) {
+        async UpdateFav (e) {
             console.log(e, this.favorite);
+            // send new favorite to database
             if (this.favorite) {
-                // send new favorite to database
+                try {
+                    const fav = {
+                        marvelid: this.details.id,
+                        category: this.call
+                    } 
+                    const newFav = await this.$axios.$post(`${this.$config.host}/users/favorites`,fav,{
+                        headers: { authorization: this.$store.state.token}
+                    });
+                } catch(e) {
+                    console.log(e);
+                }
+            // remove favorite from database
             } else {
-                // remove favorite from database
+                try {
+                    const newFav = await this.$axios.$delete(`${this.$config.host}/users/favorites/${this.call}/${this.details.id}`,{
+                        headers: { authorization: this.$store.state.token}
+                    });
+                } catch(e) {
+                    console.log(e);
+                }
             }
         }
     }
