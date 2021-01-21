@@ -139,6 +139,8 @@ export default {
             //sets checked value true or false
             this.favorite = favorites.find(element => element.marvelid === this.details.id && element.category === this.call);
             console.log(e);
+        } catch (e){
+            console.log(e);
         }
         
     },
