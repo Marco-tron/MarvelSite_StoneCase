@@ -1,6 +1,6 @@
 # MarvelSite_StoneCase
 
-> Site feito em 7 dias para o case da stone, ele utiliza a API de desenvolvedor da MARVEL para conseguir informações dos personagens e comics. Além disso para o site funcionar completamente é necessário que você esteja rodando a api encontrada em um segundo repositório, /marvel-site-api_stonecase que possibita o login e a possibilidade de favoritar itens.
+Site feito em 7 dias para o case da stone, ele utiliza a API de desenvolvedor da MARVEL para conseguir informações dos personagens e comics. Além disso para o site funcionar completamente é necessário que você esteja rodando a api encontrada em um segundo repositório, /marvel-site-api_stonecase que possibita o login e a possibilidade de favoritar itens.
 ## Tecnologias escolhidas
 ### Nuxt
 Para o desenvolvimento da aplicação foi utilizado o framework Nuxt. Escolhi ele por ser um framework que ja tenho relativo domínio e como eu possuia pouco tempo e precisava utilizar algumas outras tecnologias que eu não estava familiarizado principalmente na construção da API. Além de possuir por si só ma bela organização de arquivos ele permite que certas informações sejam carregadas do lado do servidor melhorando a experiência do usuário.
@@ -8,7 +8,7 @@ Para o desenvolvimento da aplicação foi utilizado o framework Nuxt. Escolhi el
 O Tailwind é um framework de UI que auxilia muito na construção de telas. Suas classes pré-montadas permitem que o estilo de uma tela seja montado muito rapidamente e com uma padronização muito maior.
 
 ## Antes de começar
-Ao clonar o repositório é necessário mais um passo para que você consiga rodar o projeto, algumas informação precisam ser específicas para você então é necessário a criação de um arquivo .env com osguintes dados:
+Ao clonar o repositório é necessário mais um passo para que você consiga rodar o projeto, algumas informação precisam ser específicas para você então é necessário a criação de um arquivo .env com os seguintes dados:
 ``` bash
 #sua chave pública de acesso a API da Marvel
 PUBLIC_KEY = yourpublickeyhere
