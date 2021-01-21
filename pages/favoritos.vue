@@ -64,7 +64,7 @@ export default {
                     this.categories[0].list.push(i)
                 }
                 if (i.category === "characters") {
-                    i.link = `/characters/${i.marvelid}`
+                    i.link = `/personagens/${i.marvelid}`
                     this.categories[1].list.push(i)
                 }
                 console.log(i)
