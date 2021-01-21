@@ -4,7 +4,7 @@
         <Subtitle :text="subtitle" />
         <div v-for="item in items" :key="item.index" class="my-3" >
             {{item.name}}
-            <span><input v-model="item.model" class="input" type="text"></span>
+            <span><input v-model="item.model" class="input" :type="item.type"></span>
         </div>
         <button class="button" @click.prevent.stop="SendData()">
             {{action}}
@@ -34,11 +34,13 @@ export default {
             {
                 name: "E-mail",
                 value: "email",
+                type: "text",
                 model: ""
             },
             {
                 name: "Senha",
                 value: "password",
+                type: "password",
                 model: ""
             }
         ]
