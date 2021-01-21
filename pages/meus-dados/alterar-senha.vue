@@ -5,10 +5,10 @@
         <div class="grid grid-cols-2 pb-48">
             <form>
                 <div class="grid grid-cols-3 my-2">
-                    <span class="font-bold mr-2">Senha antiga:</span> <input class="input" v-model="user.oldPassword" type="text">
+                    <span class="font-bold mr-2">Senha antiga:</span> <input class="input" v-model="user.oldPassword" type="password">
                 </div>
                 <div class="grid grid-cols-3 my-2">
-                    <span class="font-bold mr-2">Senha nova:</span> <input class="input" v-model="user.password" type="text">
+                    <span class="font-bold mr-2">Senha nova:</span> <input class="input" v-model="user.password" type="password">
                 </div>
                 <button class="button" @click.prevent.stop="attData()">
                     ATUALIZAR
