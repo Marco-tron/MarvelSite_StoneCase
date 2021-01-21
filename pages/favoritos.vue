@@ -57,7 +57,6 @@ export default {
             let favorites = await this.$axios.$get(`${this.$config.host}/users/favorites`,{
                 headers: { authorization: token}
             });
-            console.log(favorites)
             favorites = favorites.map((i)=>{
                 if (i.category === "comics") {
                     i.link = `/comics/${i.marvelid}`
@@ -67,8 +66,6 @@ export default {
                     i.link = `/personagens/${i.marvelid}`
                     this.categories[1].list.push(i)
                 }
-                console.log(i)
-                console.log(this.categories)
                 return i;
             })
         } catch(e) {

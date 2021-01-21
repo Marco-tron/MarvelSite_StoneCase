@@ -106,14 +106,12 @@ export default {
         //fetching characters or comics
         try {
             response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset + findString + relatedString}`);
-            console.log(relatedString)
 
             // calculating total pages
             pages = Math.ceil(response.data.total/response.data.limit)
         } catch (e) {
             console.log(e);
         }
-        console.log(`https://gateway.marvel.com:443/v1/public/${call}?ts=${ts}&apikey=${publickey}&hash=${hash}&limit=${limit}&offset=${offset + findString + relatedString}`);
 
         //formating response
         if (response) {
@@ -154,7 +152,6 @@ export default {
     },
     methods: {
         loadPage (page) {
-            console.log(this.$route);
             // this code changes the page you're currently in if you have a find parameter it wil also add that
             window.location.href = `${this.$route.path}?page=${page}${this.$route.query.find ? '&find=' + this.$route.query.find : ''}${this.$route.query.related ? '&related=' + this.$route.query.related +'&name=' + this.$route.query.name : ''}`
         },

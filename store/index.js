@@ -18,7 +18,6 @@ export default {
     },
     mutations: {
         userStatus(state, payload) {
-            console.log("oi")
             state.loggedIn = payload
         },
         setUser (state, data) {

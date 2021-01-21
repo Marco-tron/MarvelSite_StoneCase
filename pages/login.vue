@@ -68,9 +68,7 @@ export default {
         // function to register user
         async signUp (e) {
             try {
-                console.log("signUp",e);
                 const response = await this.$axios.$post(`${this.$config.host}/users/signup`, e);
-                console.log(response);
                 this.signmessage =  {
                     text:"Usuário criado com sucesso",
                     class: "text-blue-500",

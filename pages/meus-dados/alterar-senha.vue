@@ -41,7 +41,6 @@ export default {
                 const response = await this.$axios.$put(`${this.$config.host}/users/newPassword`, this.user, {
                     headers: { authorization: this.$store.state.token}
                 });
-                console.log(response);
                 this.message =  {
                     text:"Senha atualizado com sucesso",
                     class: "text-blue-500",

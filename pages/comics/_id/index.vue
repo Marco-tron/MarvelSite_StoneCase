@@ -73,7 +73,6 @@ export default {
         //fetching characters or comics
         try {
             response = await $axios.$get(`https://gateway.marvel.com:443/v1/public/${call}/${id}?ts=${ts}&apikey=${publickey}&hash=${hash}`).then(res => res.data.results[0]);
-            console.log(response);
         } catch (e) {
             console.log(e);
         }
@@ -137,11 +136,8 @@ export default {
             const favorites = await this.$axios.$get(`${this.$config.host}/users/favorites`,{
                 headers: { authorization: token}
             });
-            console.log(favorites)
             //sets checked value true or false
             this.favorite = favorites.find(element => element.marvelid === this.details.id && element.category === this.call);
-            console.log(favorite)
-        } catch(e) {
             console.log(e);
         }
         
@@ -154,7 +150,6 @@ export default {
     methods: {
         // function to update favorite on database
         async UpdateFav (e) {
-            console.log(e, this.favorite);
             // send new favorite to database
             if (this.favorite) {
                 try {
