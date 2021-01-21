@@ -1,12 +1,11 @@
 # MarvelSite_StoneCase
 
-Site feito em 7 dias para o case da stone, ele utiliza a API de desenvolvedor da MARVEL para obter informações dos personagens e comics. Além disso, para o site funcionar completamente, é necessário que você esteja rodando a api encontrada em um segundo repositório:
-/marvel-site-api_stonecase
-
+Site feito em 7 dias para o case da Stone, ele utiliza a API de desenvolvedor da MARVEL para obter informações dos personagens e comics. Além disso, para o site funcionar completamente, é necessário que você esteja rodando a api encontrada em um segundo repositório "marvel-site-api_stonecase".
 Ela possibita o login e a capacidade de favoritar itens.
 ## Tecnologias escolhidas
 ### Nuxt
-Para o desenvolvimento da aplicação foi utilizado o framework Nuxt. Além de possuir por si só uma bela organização de arquivos ele permite que certas informações sejam carregadas do lado do servidor melhorando a experiência do usuário. Foi escolhido por ser um framework que já tenho relativo domínio e traria rapidez, já que eu possuia pouco tempo e precisava utilizar algumas outras tecnologias que eu não estava familiarizado, principalmente na construção da API.
+Para o desenvolvimento da aplicação foi utilizado o framework Nuxt. Além de possuir por si só uma bela organização de arquivos ele permite que certas informações sejam carregadas do lado do servidor melhorando a experiência do usuário. Por ser um framework que já tenho relativo domínio, pouparia tempo para desenvolver outras tecnologias que eu não estava familiarizado, principalmente na construção da API. 
+
 ### Tailwind 
 O Tailwind é um framework de UI que auxilia muito na construção de telas. Suas classes pré-montadas permitem que o estilo de uma tela seja montado muito rapidamente e com uma padronização muito maior.
 
@@ -23,7 +22,7 @@ PRIVATE_KEY = yourprivatekeyhere
 API_HOST = yourapihosthere
 ```
 ## Build Setup
-Utilize agora este passo a passo para poder rodar a aplicação:
+Feito isso, basta este passo a passo para poder rodar a aplicação:
 ``` bash
 # install dependencies
 $ npm install
