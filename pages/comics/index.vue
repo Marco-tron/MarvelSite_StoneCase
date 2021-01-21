@@ -156,7 +156,7 @@ export default {
         loadPage (page) {
             console.log(this.$route);
             // this code changes the page you're currently in if you have a find parameter it wil also add that
-            window.location.href = `${this.$route.path}?page=${page}${this.$route.query.find ? '&find=' + this.$route.query.find : ''}`
+            window.location.href = `${this.$route.path}?page=${page}${this.$route.query.find ? '&find=' + this.$route.query.find : ''}${this.$route.query.related ? '&related=' + this.$route.query.related +'&name=' + this.$route.query.name : ''}`
         },
         detailsLink (id) {
             return this.$route.path + "/" + id
