@@ -57,7 +57,8 @@ html {
     @media screen and (max-width: 1024px) {
         padding: 0 1rem;
     }
-    @apply mx-auto my-20
+    min-height: 650px;
+    @apply mx-auto my-20 ;
 }
 *,
 *:before,
