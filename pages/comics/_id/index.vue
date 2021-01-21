@@ -159,6 +159,8 @@ export default {
             if (this.favorite) {
                 try {
                     const fav = {
+                        title: this.details.title,
+                        thumb: this.details.thumb,
                         marvelid: this.details.id,
                         category: this.call
                     } 
