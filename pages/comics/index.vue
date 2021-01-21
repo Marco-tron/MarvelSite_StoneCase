@@ -156,7 +156,7 @@ export default {
             window.location.href = `${this.$route.path}?page=${page}${this.$route.query.find ? '&find=' + this.$route.query.find : ''}${this.$route.query.related ? '&related=' + this.$route.query.related +'&name=' + this.$route.query.name : ''}`
         },
         detailsLink (id) {
-            return this.$route.path + "/" + id
+            return this.$route.path + "/" + id;
         }
     }
 }
