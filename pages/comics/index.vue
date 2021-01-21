@@ -4,7 +4,7 @@
         <div class="flex flex-col lg:flex-row md:justify-between md:items-end">
             <div class="flex flex-col items-start text-left mb-4">
                 <Title :text="category"/>
-                <Subtitle text=" Os personagens mais incríveis da MARVEL estão logo abaixo"/>
+                <Subtitle :text="subtitle[category]"/>
             </div>
             <search-bar :find="find" class="my-4"/>
         </div>
@@ -145,7 +145,11 @@ export default {
     },
     data() {
         return {
-            items
+            items,
+            subtitle:{
+                PERSONAGENS: "Os personagens mais incríveis da MARVEL estão logo abaixo",
+                COMICS: "Os melhores comics da MARVEL estão aqui embaixo"
+            }
         }
     },
     methods: {
