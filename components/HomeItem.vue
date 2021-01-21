@@ -1,12 +1,12 @@
 <template>
-    <a :href="link" class="flex flex-col items-center">
+    <a :href="link" class="flex-col flex  items-center">
         <h3 class="text-2xl font-semibold">
             {{title}}
         </h3>
         <div class="image my-4">
             <img class="object-cover h-full" :src="`images/${image}`" alt="">
         </div>
-        <see-more :link="link"/>
+        <see-more v-if="!loading" :link="link"/>
     </a>
 </template>
 
@@ -17,6 +17,11 @@ import SeeMore from '~/components/general/SeeMore';
 export default {
     components: {
         SeeMore
+    },
+    data () {
+        return {
+            loading: true
+        }
     },
     props: {
         title: {
@@ -31,6 +36,9 @@ export default {
             type: String,
             default: ''
         },
+    },
+    mounted() {
+        this.loading = false;
     }
 }
 </script>
