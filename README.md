@@ -11,7 +11,7 @@ Para o desenvolvimento da aplicação foi utilizado o framework Nuxt. Além de p
 O Tailwind é um framework de UI que auxilia muito na construção de telas. Suas classes pré-montadas permitem que o estilo de uma tela seja montado muito rapidamente e com uma padronização muito maior.
 
 ## Antes de começar
-Ao clonar o repositório é necessário mais um passo para que você consiga rodar o projeto, algumas informação precisam ser específicas para você então é necessário a criação de um arquivo .env com os seguintes dados:
+Ao clonar o repositório é necessário mais um passo para que você consiga rodar o projeto. Precisamos configurar algumas variáveis de ambiente, então é necessário a criação de um arquivo .env com os seguintes dados:
 ``` bash
 #sua chave pública de acesso a API da Marvel
 PUBLIC_KEY = yourpublickeyhere
